@@ -1,0 +1,60 @@
+SQL QUERIES FOR HOSPITAL MANAGEMENT SYSTEM
+IT INCLUDE FOUR TABLE AS FOLLOWS
+
+FIRST CREATE DATABASE :
+         CREATE DATABASE hospital_management;
+1) user_details TABLE :
+CREATE TABLE hospitalmanagementsystem.user_details (
+  id INT NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+2) specialist TABLE :
+CREATE TABLE hospitalmanagementsystem.specialist (
+  id INT NOT NULL AUTO_INCREMENT,
+  spec_name VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+3) doctor TABLE :
+CREATE TABLE hospitalmanagementsystem.doctor (
+  id INT NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(45) NOT NULL,
+  dob VARCHAR(45) NOT NULL,
+  qaulification VARCHAR(45) NOT NULL,
+  specialist VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  mobno VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+4) appointment TABLE :
+CREATE TABLE hospitalmanagementsystem.appointment (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  fullname VARCHAR(45) NOT NULL,
+  gender VARCHAR(45) NOT NULL,
+  age VARCHAR(45) NOT NULL,
+  appoint_date VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  phno VARCHAR(45) NOT NULL,
+  diseases VARCHAR(45) NOT NULL,
+  doctor_id INT NOT NULL,
+  address VARCHAR(500) NOT NULL,
+  status VARCHAR(500) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX uid_idx (user_id ASC) VISIBLE,
+  INDEX did_idx (doctor_id ASC) VISIBLE,
+  CONSTRAINT uid
+    FOREIGN KEY (user_id)
+    REFERENCES hospitalmanagementsystem.user_details (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT did
+    FOREIGN KEY (doctor_id)
+    REFERENCES hospitalmanagementsystem.doctor (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+USE THIS QUERIES FOR DATABASE 
